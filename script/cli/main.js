@@ -37,7 +37,7 @@ const commands = {
                "print [text] - Display the text\n" +
                "jump [keyword] - Open the specified URL\n" +
                "newjump [keyword] [url] - Add a new URL mapping\n" +
-               "showCommands - Show all stored commands\n" +
+               "mycommands - Show all stored commands\n" +
                "search [query] - Search DuckDuckGo for the query";
     },
     clear: () => {
@@ -79,7 +79,7 @@ const commands = {
 
         return `Added new jump command: ${keyword} -> ${url}`;
     },
-    showCommands: () => {
+    mycommands: () => {
         return Object.entries(urlMapping)
             .map(([key, value]) => `${key} -> ${value}`)
             .join("\n") || "No custom commands found.";
