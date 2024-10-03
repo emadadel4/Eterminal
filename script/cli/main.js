@@ -167,7 +167,7 @@ function processCommand(input) {
             displayOutput(output); // Display command output
         }
     } else {
-        displayOutput(`❌ Command not found: ${command}`); // Command not found message
+        displayOutput(`❌ Unknown command. Type 'help' to see the list of available commands.`); // Command not found message
     }
 }
 
