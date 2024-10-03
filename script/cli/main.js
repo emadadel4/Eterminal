@@ -63,7 +63,7 @@ const commands = {
     },
     newurl: (args) => {
         if (args.length < 2) {
-            return "Usage: new-jump [keyword] [url]";
+            return "Usage: newurl [keyword] [url]";
         }
         const keyword = args[0].toLowerCase(); // Get the keyword
         const url = args.slice(1).join(" "); // Join remaining args as the URL
@@ -74,7 +74,7 @@ const commands = {
         // Save updated mapping to localStorage
         localStorage.setItem('mycommands', JSON.stringify(urlMapping));
 
-        return `Added new jump command: ${keyword} -> ${url}`;
+        return `Added new url command: ${keyword} -> ${url}`;
     },
     mycommands: () => {
         return Object.entries(urlMapping)
