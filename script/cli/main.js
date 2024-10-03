@@ -12,6 +12,8 @@ const clockDiv = document.getElementById('clock'); // Get clock div
 // Load existing commands from localStorage or initialize an empty object
 let urlMapping = JSON.parse(localStorage.getItem('mycommands')) || {
     yt: 'https://www.youtube.com/@emadadel4',
+    github: 'https://github.com/emadadel4',
+    blog: 'https://emadadel4.github.io/'
 };
 
 // Load command history from localStorage or initialize an empty array
@@ -193,6 +195,12 @@ function displayOutput(output) {
 function getMatchingCommands(input) {
     // Get commands that start with the current input
     return Object.keys(commands).filter(cmd => cmd.startsWith(input));
+}
+
+
+
+function focusInput() {
+    document.getElementById('input').focus();
 }
 
 // Initialize clock display on load
