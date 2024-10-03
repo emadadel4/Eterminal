@@ -11,10 +11,7 @@ const clockDiv = document.getElementById('clock'); // Get clock div
 
 // Load existing commands from localStorage or initialize an empty object
 let urlMapping = JSON.parse(localStorage.getItem('mycommands')) || {
-    github: 'https://github.com',
-    google: 'https://www.google.com',
-    youtube: 'https://www.youtube.com',
-    // Add more mappings as needed
+    yt: 'https://www.youtube.com/@emadadel4',
 };
 
 // Load command history from localStorage or initialize an empty array
