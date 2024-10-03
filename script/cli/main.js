@@ -35,7 +35,7 @@ const commands = {
                "clear - Clear the terminal\n" +
                "cls - Clear the terminal\n" +
                "print [text] - Display the text\n" +
-               "jump [keyword] - Open the specified URL\n" +
+               "open [keyword] - Open the specified URL\n" +
                "newjump [keyword] [url] - Add a new URL mapping\n" +
                "mycommands - Show all stored commands\n" +
                "search [query] - Search DuckDuckGo for the query";
@@ -49,7 +49,7 @@ const commands = {
     print: (args) => {
         return args.join(" ");
     },
-    jump: (args) => {
+    open: (args) => {
         if (args.length === 0) {
             return "Usage: jump [keyword]";
         }
