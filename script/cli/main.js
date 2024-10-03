@@ -59,9 +59,9 @@ const commands = {
         if (url) {
             // Open the URL in a new tab
             window.open(url, '_blank');
-            return `Opening ${url}...`;
+            return `🌐 Opening ${url}...`;
         } else {
-            return `No URL found for: ${keyword}`; // No URL found message
+            return `❌ No URL found. Make sure you've added it, Type "mycommands" to see url list`; // No URL found message
         }
     },
     newJump: (args) => {
@@ -170,7 +170,7 @@ function processCommand(input) {
             displayOutput(output); // Display command output
         }
     } else {
-        displayOutput(`Command not found: ${command}`); // Command not found message
+        displayOutput(`❌ Command not found: ${command}`); // Command not found message
     }
 }
 
