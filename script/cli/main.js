@@ -160,7 +160,7 @@ commandHistoryIndex = commandHistory.length; // Set the current index to the len
 
 function processCommand(input) {
     const args = input.split(" "); // Split input into command and arguments
-    const command = args[0]; // First word is the command
+    const command = args[0].toLowerCase(); // Convert command to lowercase
     const commandArgs = args.slice(1); // Remaining words are the arguments
 
     if (commands[command]) {
