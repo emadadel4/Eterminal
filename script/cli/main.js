@@ -82,10 +82,13 @@ const commands = {
             .join("\n") || "No custom commands found.";
     },
     search: (query) => {
-        const searchQuery = query.join(" "); // Join the arguments to form the search query
+        const searchQuery = query.join(" ").trim(); // Join the arguments to form the search query and trim whitespace
+        if (searchQuery === "") {
+            return "Usage: search [query] - Please provide a search term."; // Return a message if the search query is empty
+        }
         const searchUrl = `https://duckduckgo.com/?t=ffab&q=${encodeURIComponent(searchQuery)}`; // Construct the search URL
         window.open(searchUrl, '_blank'); // Open search in a new tab
-        return `Searching for: ${searchQuery}`;
+        return `Searching for: ${searchQuery}`; // Return the search query confirmation
     }
 };
 
@@ -142,7 +145,7 @@ inputField.addEventListener('keydown', function(event) {
             const matchingCommands = getMatchingCommands(currentInput); // Get commands matching the current input
             if (matchingCommands.length === 1) {
                 // If there's only one match, complete it
-                inputField.value = matchingCommands[0]; // Complete the command
+                inputField.value = matchingCommands[0] + ' '; // Complete the command
             } else if (matchingCommands.length > 1) {
                 // If multiple matches, display them
                 displayOutput(`Possible commands: ${matchingCommands.join(', ')}`);
