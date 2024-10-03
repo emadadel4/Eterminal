@@ -33,7 +33,7 @@ const commands = {
                "cls - Clear the terminal\n" +
                "print [text] - Display the text\n" +
                "open [keyword] - Open the specified URL\n" +
-               "newjump [keyword] [url] - Add a new URL mapping\n" +
+               "newurl [keyword] [url] - Add a new URL mapping\n" +
                "mycommands - Show all stored commands\n" +
                "search [query] - Search DuckDuckGo for the query";
     },
@@ -61,7 +61,7 @@ const commands = {
             return `❌ No URL found. Make sure you've added it, Type "mycommands" to see url list`; // No URL found message
         }
     },
-    newJump: (args) => {
+    newurl: (args) => {
         if (args.length < 2) {
             return "Usage: new-jump [keyword] [url]";
         }
