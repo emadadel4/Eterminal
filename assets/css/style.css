@@ -82,6 +82,14 @@ input {
 
 }
 
+#error{
+  color: red;
+}
+
+#info{
+  margin-bottom: 8px;
+}
+
 #clock {
   font-family: monospace; 
   color: #ffffff; 
