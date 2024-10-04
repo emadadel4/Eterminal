@@ -46,11 +46,13 @@ const commands = {
         outputDiv.innerHTML = ""; // Clear output
     },
     print: (args) => {
-        return args.join(" ");
+
+         return displayOutput(args.join(" "), "info","1");
+
     },
     open: (args) => {
         if (args.length === 0) {
-            return "Usage: jump [keyword]";
+            return displayOutput("Usage: open [keyword]","info","1");
         }
         const keyword = args[0].toLowerCase(); // Get the keyword
         const url = urlMapping[keyword]; // Get the corresponding URL
@@ -58,9 +60,11 @@ const commands = {
         if (url) {
             // Open the URL in a new tab
             window.open(url, '_blank');
-            return `🌐 Opening ${url}...`;
+            return displayOutput(`🌐 Opening ${url}...`, "info","1"); 
         } else {
-            return `❌ No URL found. Make sure you've added it, Type "mycommands" to see url list`; // No URL found message
+
+            // No URL found message
+            return displayOutput(`❌ No URL found. Make sure you've added it, Type "mycommands" to see url list`,"error", "1"); 
         }
     },
     newurl: (args) => {
@@ -172,24 +176,50 @@ function processCommand(input) {
             displayOutput(output); // Display command output
         }
     } else {
-        displayOutput(`❌ Unknown command. Type 'help' to see the list of available commands.`); // Command not found message
+        displayOutput(`<h5>❌ Unknown command. Type 'help' to see the list of available commands.</h5>`, "error", "1"); // Command not found message
     }
 }
 
 // Function to render output to the terminal with clickable URLs
-function displayOutput(output) {
+function displayOutput(output, level, fontsize) {
     const outputLine = document.createElement('div');
-    
+    outputLine.classList.add('your-class-name');
+    outputLine.id = level;
+
+    // Set the font size if provided
+    if (fontsize) {
+        outputLine.style.fontSize = fontsize + 'rem'; 
+    }
+
+
     // Regex to match URLs
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     const formattedOutput = output.replace(urlRegex, (url) => {
         return `<a href="${url}" target="_blank" class="link">${url}</a>`;
     });
 
-    outputLine.innerHTML = formattedOutput; // Use innerHTML to render formatted output
+    // Use switch to handle different levels
+    switch(level) {
+        case "info":
+            outputLine.style.color = 'white'; 
+            break;
+        case "warning":
+            outputLine.style.color = 'orange'; 
+            break;
+        case "error":
+            outputLine.style.color = 'red'; 
+            break;
+        default:
+            outputLine.style.color = 'white';
+            break;
+    }
+
+    // Set the inner HTML with formatted output
+    outputLine.innerHTML = formattedOutput; 
     outputDiv.appendChild(outputLine);
     outputDiv.scrollTop = outputDiv.scrollHeight; // Scroll to the bottom
 }
+
 
 // Function to get matching commands
 function getMatchingCommands(input) {
